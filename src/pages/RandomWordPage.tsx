@@ -26,31 +26,42 @@ const RandomWordPage = () => {
     const [firstWord, setFirstWord] = useState<string>("");
     const [secondWord, setSecondWord] = useState<string>("");
 
+    
+
     useEffect(() => {
+        if (firstWord === "") return;
+        window.alert("Clic sur le bouton de génération de mot 1");
+        
+        
         // TODO mettre quelque chose ici
         // Question, quand se déclenche la fonction associée à ce "useEffect" ?
     }, [firstWord]);
 
     useEffect(() => {
+        if (secondWord === "") return;
+        window.alert("Clic sur le bouton de génération de mot 2");
         // TODO mettre quelque chose ici
         // Question, quand se déclenche la fonction associée à ce "useEffect" ?
     }, [secondWord]);
 
     useEffect(() => {
+        alert("Clic sur un des boutons de génération de mot");
         // TODO mettre quelque chose ici
         // Question, quand se déclenche la fonction associée à ce "useEffect" ?
-    }, []) // tableau de dépendances à des variables d'état vide ! Qu'est ce ça fait ?
+    }, [1]) // tableau de dépendances à des variables d'état vide ! Qu'est ce ça fait ?
 
     useEffect(() => {
+        
         // TODO mettre quelque chose ici
         // Question, quand se déclenche la fonction associée à ce "useEffect" ?
-
 
         // Si dans une lambda de useEffect nous avons un "return" alors nous pouvons renvoyer une fonction de démontage
         // Cette fonction sera déclenchée lorsque le composant sera retiré du DOM (par exemple si nous changeons de page)
         return () => {
             // TODO : Mettre ici le code à exécuter lors du démontage
             // Par exemple : ajoutez un appel à la fonction Javascript « alert() » permettant d'indiquer un message particulier
+            if (secondWord === "" || firstWord === "") return;
+            alert("Composant détruit");
         };
     });
 
