@@ -18,14 +18,18 @@ const UsersPage = () => {
     // Url à utiliser : https://jsonplaceholder.typicode.com/users
     // Tutoriel pouvant vous aider : https://dev.to/antdp425/react-fetch-data-from-api-with-useeffect-27le
     useEffect(() => {
-        setUsers(usersData);
+        // setUsers(usersData);
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+          .then((res) => res.json())
+          .then((data) => setUsers(data));
         // TODO mise à jour du state
     }, []);
 
     return (
       <>
         <h1>List des utilisateurs</h1>
-        <div className="users">{users.map((user)=>(
+        <div>{users.map((user)=>(
             <UserCard key={user.id} user={user}/>
         ))}</div>
       </>
