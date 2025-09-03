@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { User, UserCard } from "../../components/UserCard/UserCard";
+import usersData from "../../assets/data/users";
+
 
 // TODO importer les utilisateurs du fichier "/assets/data/users.tsx"
 
@@ -9,7 +11,6 @@ import { User, UserCard } from "../../components/UserCard/UserCard";
 const UsersPage = () => {
     // Déclaration d'un state permettant de stocker les utilisateur
     const [users, setUsers] = useState<User[] | []>([]);
-
     // TODO compléter ce useEffect qui se déclenche à la création du composant
     // Dans un premier temps : complétez le avec la tableau d'utilisateurs provenant du fichier "assets/data/users.tsx"
     //
@@ -17,15 +18,17 @@ const UsersPage = () => {
     // Url à utiliser : https://jsonplaceholder.typicode.com/users
     // Tutoriel pouvant vous aider : https://dev.to/antdp425/react-fetch-data-from-api-with-useeffect-27le
     useEffect(() => {
+        setUsers(usersData);
         // TODO mise à jour du state
     }, []);
 
     return (
-        <p>TODO</p>
-        // {
-        // // TODO faire interface graphique pour la liste des utilisateurs
-        // // Pour générer les "cards" utilisateur veillez à vous servir du composant "UserCard
-        // }
+      <>
+        <h1>List des utilisateurs</h1>
+        <div className="users">{users.map((user)=>(
+            <UserCard key={user.id} user={user}/>
+        ))}</div>
+      </>
     );
 
 }

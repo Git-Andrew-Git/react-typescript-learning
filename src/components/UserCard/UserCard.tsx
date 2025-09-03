@@ -10,9 +10,31 @@ export interface Coordinates {
     lng: string
 }
 
+export interface Address {
+    street: string,
+    suite: string,
+    city: string,
+    zipcode: string,
+    geo: Coordinates
+}
+
+export interface Company{
+    name: string,
+    catchPhrase: string,
+    bs: string
+}
+
 // TODO ajouter les interfaces manquantes
 
 export interface User {
+    id: number,
+    name: string,
+    username: string,
+    email: string,
+    address: Address,
+    phone: string,
+    website: string,
+    company: Company
     // TODO compléter cette interface
     // techniquement, elle doit contenir des informations similaires à ce qui est renvoyé par l'API utilisée
     // le endpoint utilisé est le suivant : https://jsonplaceholder.typicode.com/users
@@ -21,8 +43,14 @@ export interface User {
 export const UserCard = ({ user } : { user: User }) => {
 
     return (
-        <div className={ styles.userCard }>
-            {/* TODO compléter le code pour interface graphique */}
-        </div>
-    )
+      <div className={styles.userCard}>
+        <p>{user.id}</p>
+        <p>{user.name}</p>
+        <p>{user.username}</p>
+        <p>{user.email}</p>
+        <p>{user.address.street}</p>
+        <p>{user.address.geo.lat}</p>
+        <p>{user.company.name}</p>
+      </div>
+    );
 }

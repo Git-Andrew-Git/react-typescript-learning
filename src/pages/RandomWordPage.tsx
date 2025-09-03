@@ -45,10 +45,16 @@ const RandomWordPage = () => {
     }, [secondWord]);
 
     useEffect(() => {
-        alert("Clic sur un des boutons de génération de mot");
+        alert("INIT");
         // TODO mettre quelque chose ici
         // Question, quand se déclenche la fonction associée à ce "useEffect" ?
-    }, []) // tableau de dépendances à des variables d'état vide ! Qu'est ce ça fait ?
+    }, [])
+    
+    useEffect(() => {
+      alert("Clic sur un des boutons de génération de mot");
+      // TODO mettre quelque chose ici
+      // Question, quand se déclenche la fonction associée à ce "useEffect" ?
+    }, [firstWord, secondWord]);// tableau de dépendances à des variables d'état vide ! Qu'est ce ça fait ?
 
     useEffect(() => {
         
