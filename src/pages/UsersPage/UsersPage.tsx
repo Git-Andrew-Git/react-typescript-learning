@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { User, UserCard } from "../../components/UserCard/UserCard";
-import usersData from "../../assets/data/users";
+// import usersData from "../../assets/data/users";
 
 
 // TODO importer les utilisateurs du fichier "/assets/data/users.tsx"

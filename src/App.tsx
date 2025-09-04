@@ -8,7 +8,7 @@ import ClockPage from './pages/ClockPage/ClockPage';
 import HomePage from './pages/HomePage';
 import RandomWordPage from './pages/RandomWordPage';
 import UsersPage from './pages/UsersPage/UsersPage';
-// import DomModificationPage from './pages/DomModification/DomModificationPage';
+import DomModificationPage from './pages/DomModification/DomModificationPage';
 
 function App() {
 
@@ -34,7 +34,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/counter" element={<CounterPage />} />
             <Route path="/tasks" element={<TasksPage />} />
-            {/* <Route path="/dommodification" element={<DomModificationPage />} /> */}
+            <Route path="/dommodification" element={<DomModificationPage />} />
             <Route path="/randomword" element={<RandomWordPage />} />
             <Route path="/clock" element={<ClockPage />} />
             <Route path="/users" element={<UsersPage />} />

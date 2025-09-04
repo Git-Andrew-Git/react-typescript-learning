@@ -21,6 +21,7 @@ const DomModificationPage = () => {
     // références pour les éléments du DOM
     // référence vers le titre
     const titleRef = useRef<HTMLHeadingElement>(null);
+    const paragraphRef = useRef<HTMLParagraphElement>(null);
     // TODO référence vers le paragraphe
     // Quel est le type "TypeScript" a utiliser ?
 
@@ -30,10 +31,10 @@ const DomModificationPage = () => {
      */
     const changeTitleColor = (color: string) => {
         // Le composant HTML pointé par la référence peut être récupéré grâce à <nom-ref>.current
-        let title = titleRef.current;
+        const title = titleRef.current;
         // vérification : le titre est-il bien présent ?
         if (title != null) {
-            
+            title.style.color = color;
             // TODO changement de la couleur
             // il est possible d'accéder au style d'un élément HTML en faisant :
             // title.style
@@ -54,19 +55,25 @@ const DomModificationPage = () => {
      */
     const toggleParagraphStyle = () => {
         // tentative de récupération de l'élément HTML paragraphe
-        let paragraph = ;
+        const paragraph = paragraphRef.current;
 
         if (paragraph != null) {
+
             // il est possible d'activer ou désactiver une classe en uilisant la méthode JS "toggle"
             // exemple d'utilisation : https://www.w3schools.com/howto/howto_js_toggle_class.asp
 
             // vérification si classe "highlighted" présente
             const isHighlighted = paragraph.classList.contains(styles.highlighted);
 
-            if (isHighlighted) { // si c'est bien "highlighted"
+            if (isHighlighted) { 
+                paragraph.classList.toggle(styles.normal);
+                
+                
+                // si c'est bien "highlighted"
                 // TODO insérer un toggle pour passer en normal
                 // paragraph.classList.toggle( ????????? )
             } else {
+                paragraph.classList.toggle(styles.highlighted);
                 // TODO insérer un toggle pour passer en highlighted
 
             }
@@ -74,40 +81,40 @@ const DomModificationPage = () => {
     };
 
     return (
-        <div className={styles.container}>
-            <h1 ref={titleRef} className={styles.title}>
-                Titre avec couleur modifiable
-            </h1>
-            <div className={styles.buttonGroup}>
-                <button
-                    className={styles.button}
-                    onClick={() => changeTitleColor("red")}
-                >
-                    Rouge
-                </button>
-                <button
-                    className={styles.button}
-                    onClick={() => changeTitleColor("blue")}
-                >
-                    Bleu
-                </button>
-                <button
-                    className={styles.button}
-                    onClick={() => changeTitleColor("green")}
-                >
-                    Vert
-                </button>
-            </div>
-            <p className={styles.paragraph + ' ' + styles.normal}>
-                Paragraphe avec style modifiable
-            </p>
-            <button
-                className={styles.button}
-                onClick={toggleParagraphStyle}
-            >
-                Basculer le style du paragraphe
-            </button>
+      <div className={styles.container}>
+        <h1 ref={titleRef} className={styles.title}>
+          Titre avec couleur modifiable
+        </h1>
+        <div className={styles.buttonGroup}>
+          <button
+            className={styles.button}
+            onClick={() => changeTitleColor("red")}
+          >
+            Rouge
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => changeTitleColor("blue")}
+          >
+            Bleu
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => changeTitleColor("green")}
+          >
+            Vert
+          </button>
         </div>
+        <p
+          ref={paragraphRef}
+          className={styles.paragraph + " " + styles.normal}
+        >
+          Paragraphe avec style modifiable
+        </p>
+        <button className={styles.button} onClick={toggleParagraphStyle}>
+          Basculer le style du paragraphe
+        </button>
+      </div>
     );
 };
 
